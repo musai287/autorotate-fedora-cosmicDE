@@ -26,7 +26,7 @@ sudo dnf install wlr-randr iio-sensor-proxy
 
 -  Clone the repository:
 ```bash
-git clone https://github.com/your-username/rotate-screen.git
+git clone https://github.com/musai287/autorotate-fedora-cosmicDE.git
 ```
 -  Navigate to the project folder:
 ```bash
