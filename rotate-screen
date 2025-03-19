@@ -1,0 +1,33 @@
+#!/bin/bash
+
+monitor-sensor | while read -r line; do
+    echo "DEBUG: Ricevuto - $line"  # Mostra tutto l'output
+
+    if [[ "$line" == *"Accelerometer orientation changed:"* ]]; then
+        ORIENTATION=$(echo "$line" | sed -E 's/.*changed: (.*)/\1/')
+        echo "DEBUG: Rilevato orientamento - $ORIENTATION"
+
+        case "$ORIENTATION" in
+            normal)
+                echo "DEBUG: Ruoto a NORMAL"
+                wlr-randr --output eDP-1 --transform normal
+                ;;
+            bottom-up)
+                echo "DEBUG: Ruoto a 180°"
+                wlr-randr --output eDP-1 --transform 180
+                ;;
+            left-up)
+                echo "DEBUG: Ruoto a 90°"
+                wlr-randr --output eDP-1 --transform 90
+                ;;
+            right-up)
+                echo "DEBUG: Ruoto a 270°"
+                wlr-randr --output eDP-1 --transform 270
+                ;;
+            *)
+                echo "DEBUG: Orientazione sconosciuta - $ORIENTATION"
+                ;;
+        esac
+    fi
+done
+

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Rotate Screen
+Exec=/usr/local/bin/rotate-screen
+Type=Application
+X-GNOME-Autostart-enabled=true
+Terminal=false
+
